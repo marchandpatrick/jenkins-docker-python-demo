@@ -7,7 +7,8 @@ node {
     }
     def pythonImage
     stage('build docker image') {
-        pythonImage = docker.build("maxsum:build")
+		withEnv(["PATH+GIT=C:\Program Files\Git\usr\bin"]) {
+			pythonImage = docker.build("maxsum:build")
     }
     stage('test') {
         pythonImage.inside {
